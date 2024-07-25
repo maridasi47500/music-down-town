@@ -72,7 +72,13 @@
                             <%="<form action=\"/logmeout\" method=\"post\"><input value=\"se deconnecter\" type=\"submit\"/></form>" if session['name'] != "" else ""%>
 
                                     <%="bienvenue "+session['name'] if session['name'] != "" else ""%>
-				    <%="<a href=\"/addsymbol\"> add symbol</a>" if session['name'] != "" else ""%>
+<%="<a href=\"/addcouragelog\"> add couragelog</a>" if session['name'] != "" else ""%>
+<%="<a href=\"/addcouragejournal\"> add couragejournal</a>" if session['name'] != "" else ""%>
+<%="<a href=\"/addasif\"> add asif</a>" if session['name'] != "" else ""%>
+<%="<a href=\"/addgoals\"> add goals</a>" if session['name'] != "" else ""%>
+<%="<a href=\"/addfourpointfield\"> add fourpointfield</a>" if session['name'] != "" else ""%>
+<%="<a href=\"/addsymbol\"> add symbol</a>" if session['name'] != "" else ""%>
+
 
             </div>
 

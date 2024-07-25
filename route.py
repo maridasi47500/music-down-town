@@ -66,8 +66,24 @@ class Route():
         self.Program.logout()
         self.set_redirect("/")
         return self.render_figure.render_redirect()
+    def addfourpointfield(self,search):
+        print("hello action")
+        return self.render_figure.render_figure("welcome/fourpointfield.html")
     def addsymbol(self,search):
         print("hello action")
+    def addcouragelog(self,search):
+        print("hello action")
+        return self.render_figure.render_figure("welcome/couragelog.html")
+    def addcouragejournal(self,search):
+        print("hello action")
+        return self.render_figure.render_figure("welcome/couragejournal.html")
+    def addasif(self,search):
+        print("hello action")
+        return self.render_figure.render_figure("welcome/asif.html")
+    def addgoals(self,search):
+        print("hello action")
+        return self.render_figure.render_figure("welcome/goal.html")
+
 
         return self.render_figure.render_figure("welcome/addsymbol.html")
     def hello(self,search):
@@ -119,12 +135,12 @@ class Route():
     def newsymbol(self,params={}):
         myparam=self.get_post_data()(params=("user_id","name","pic"))
         self.user=self.db.Symbols.create(myparam)
-        if self.user["user_id"]:
+        if self.user["symbol_id"]:
             self.set_session(self.user)
             self.set_json("{\"redirect\":\"/\"}")
             return self.render_figure.render_json()
         else:
-            self.set_session(self.user)
+            self.set_notice("erreur ; pas ok pour la creation de votre symbol")
             self.set_json("{\"redirect\":\"/sign_up\"}")
             return self.render_figure.render_json()
     def save_user(self,params={}):
@@ -137,6 +153,61 @@ class Route():
         else:
             self.set_session(self.user)
             self.set_json("{\"redirect\":\"/sign_up\"}")
+            return self.render_figure.render_json()
+    def newgoals(self,params={}):
+        myparam=self.get_post_data()(params=("timeframe","logistics","execution","mission"))
+        goals=self.db.Goals.create(myparam)
+        if goals["goals_id"]:
+            self.set_notice("votre goals a été créé(e)")
+            self.set_json("{\"redirect\":\"/addgoals\"}")
+            return self.render_figure.render_json()
+        else:
+            self.set_notice("erreur ; pas ok pour la creation de votre goals")
+            self.set_json("{\"redirect\":\"/addgoals\"}")
+            return self.render_figure.render_json()
+    def newasif(self,params={}):
+        myparam=self.get_post_data()(params=("speech","facial","body","accessories"))
+        asif=self.db.Asif.create(myparam)
+        if asif["asif_id"]:
+            self.set_notice("votre asif a été créé(e)")
+            self.set_json("{\"redirect\":\"/addasif\"}")
+            return self.render_figure.render_json()
+        else:
+            self.set_notice("erreur ; pas ok pour la creation de votre asif")
+            self.set_json("{\"redirect\":\"/addasif\"}")
+            return self.render_figure.render_json()
+    def newfourpointfield(self,params={}):
+        myparam=self.get_post_data()(params=("mission","situation","execution","contingencies"))
+        fourpointfield=self.db.Fourpointfield.create(myparam)
+        if fourpointfield["fourpointfield_id"]:
+            self.set_notice("votre fourpointfield a été créé(e)")
+            self.set_json("{\"redirect\":\"/addfourpointfield\"}")
+            return self.render_figure.render_json()
+        else:
+            self.set_notice("erreur ; pas ok pour la creation de votre fourpointfield")
+            self.set_json("{\"redirect\":\"/addfourpointfield\"}")
+            return self.render_figure.render_json()
+    def newcouragelog(self,params={}):
+        myparam=self.get_post_data()(params=("event","fear","action","result"))
+        couragelog=self.db.Couragelog.create(myparam)
+        if couragelog["couragelog_id"]:
+            self.set_notice("votre couragelog a été créé(e)")
+            self.set_json("{\"redirect\":\"/addcouragelog\"}")
+            return self.render_figure.render_json()
+        else:
+            self.set_notice("erreur ; pas ok pour la creation de votre couragelog")
+            self.set_json("{\"redirect\":\"/addcouragelog\"}")
+            return self.render_figure.render_json()
+    def newcouragejournal(self,params={}):
+        myparam=self.get_post_data()(params=("event","fear","action","result"))
+        couragejournal=self.db.Couragejournal.create(myparam)
+        if couragejournal["couragejournal_id"]:
+            self.set_notice("votre couragejournal a été créé(e)")
+            self.set_json("{\"redirect\":\"/addcouragejournal\"}")
+            return self.render_figure.render_json()
+        else:
+            self.set_notice("erreur ; pas ok pour la creation de votre couragejournal")
+            self.set_json("{\"redirect\":\"/addcouragejournal\"}")
             return self.render_figure.render_json()
     def run(self,redirect=False,redirect_path=False,path=False,session=False,params={},url=False,post_data=False):
         if post_data:
@@ -185,6 +256,16 @@ class Route():
             '^/signin$': self.signin,
             '^/logmeout$':self.logout,
             '^/newsymbol$':self.newsymbol,
+            '^/addcouragejournal$':self.addcouragejournal,
+            '^/addcouragelog$':self.addcouragelog,
+            '^/addfourpointfield$':self.addfourpointfield,
+            '^/addgoals$':self.addgoals,
+            '^/addasif$':self.addasif,
+            '^/newcouragejournal$':self.newcouragejournal,
+            '^/newcouragelog$':self.newcouragelog,
+            '^/newfourpointfield$':self.newfourpointfield,
+            '^/newgoals$':self.newgoals,
+            '^/newasif$':self.newasif,
             '^/addsymbol$':self.addsymbol,
             '^/save_user$':self.save_user,
             '^/update_user$':self.update_user,

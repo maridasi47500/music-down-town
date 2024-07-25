@@ -1,5 +1,5 @@
 <h2>courage log</h2>
-<form action="" method="post">
+<form action="/newcouragelog" method="post">
 	<div class="field">
 		<label for="user_event">event/situation
 		</label>
@@ -24,3 +24,16 @@
 		<input type="submit" name="submit" value="envoyer" id="user_submit" />
 	</div>
 </form>
+<table>
+<tr>
+<td>event
+</td>
+<td>fear
+</td>
+<td>action
+</td>
+<td>result
+</td>
+</tr>
+<%=render_collection(collection=db.Couragelog.getall(), partial='welcome/_couragelog.html', as_='couragelog')%>
+</table>

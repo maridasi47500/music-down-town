@@ -16,3 +16,6 @@
 		<input type="submit" name="submit" value="envoyer" id="user_submit" />
 	</div>
 </form>
+<div>
+<%=render_collection(collection=db.Symbol.getall(), partial='welcome/_symbol.html', as_='symbol')%>
+</div>

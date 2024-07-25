@@ -1,5 +1,5 @@
 <h2>goals</h2>
-<form action="" method="post">
+<form action="/newgoals" method="post">
 	<div class="field">
 		<label for="user_timeframe">timeframe
 		</label>
@@ -39,4 +39,5 @@
 			missiondestination 
 		</td>
 	</tr>
+<%=render_collection(collection=db.Goals.getall(), partial='welcome/_goals.html', as_='goals')%>
 </table>

@@ -1,10 +1,5 @@
 <h2>as ifs</h2>
-<form action="" method="post">
-	<div class="field">
-		<label for="user_scaffoldform.py">scaffoldform.py
-		</label>
-		<input type="text" name="scaffoldform.py" id="user_scaffoldform.py" />
-	</div>
+<form action="/newasif" method="post">
 	<div class="field">
 		<label for="user_speech">speech mannerism
 		</label>
@@ -29,3 +24,16 @@
 		<input type="submit" name="submit" value="envoyer" id="user_submit" />
 	</div>
 </form>
+<table>
+<tr>
+<td>speech
+</td>
+<td>facial
+</td>
+<td>body
+</td>
+<td>accessories
+</td>
+</tr>
+<%=render_collection(collection=db.Asif.getall(), partial='welcome/_asif.html', as_='asif')%>
+</table>
