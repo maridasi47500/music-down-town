@@ -1,6 +1,6 @@
 <h2>Symbols</h2>
 <form action="/newsymbol" method="post">
-		<input type="hidden" name="user_id" id="user_user_id" />
+		<input value="<%=session["user_id"]%>" type="hidden" name="user_id" id="user_user_id" />
 	<div class="field">
 		<label for="user_name">name
 		</label>

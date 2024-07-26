@@ -71,6 +71,7 @@ class Route():
         return self.render_figure.render_figure("welcome/fourpointfield.html")
     def addsymbol(self,search):
         print("hello action")
+        return self.render_figure.render_figure("welcome/addsymbol.html")
     def addcouragelog(self,search):
         print("hello action")
         return self.render_figure.render_figure("welcome/couragelog.html")
@@ -85,7 +86,7 @@ class Route():
         return self.render_figure.render_figure("welcome/goal.html")
 
 
-        return self.render_figure.render_figure("welcome/addsymbol.html")
+
     def hello(self,search):
         print("hello action")
 
@@ -144,7 +145,8 @@ class Route():
             self.set_json("{\"redirect\":\"/sign_up\"}")
             return self.render_figure.render_json()
     def save_user(self,params={}):
-        myparam=self.get_post_data()(params=("country_id","phone","email","gender","mypic","password","password_security","nomcomplet"))
+        myparam=self.get_post_data()(params=("job_id","description","country_id","phone","email","gender","mypic","password","passwordconfirmation","nomcomplet"))
+        print(myparam)
         self.user=self.dbUsers.create(myparam)
         if self.user["user_id"]:
             self.set_session(self.user)
