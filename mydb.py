@@ -7,6 +7,7 @@ from asif import Asif
 from goals import Goals
 from fourpointfield import Fourpointfield
 from symbol import Symbol
+from song import Song
 
 
 class Mydb():
@@ -14,6 +15,7 @@ class Mydb():
     print("hello")
     self.Country=Country()
     self.User=User()
+    self.Song=Song()
     self.Job=Job()
     self.Couragelog=Couragelog()
     self.Couragejournal=Couragejournal()

@@ -6,6 +6,7 @@ class Directory():
     js=False
     nocache=False
     json=False
+    music=False
     htmlcode=False
     css=False
     def __init__(self, title):
@@ -71,6 +72,10 @@ class Directory():
         return self.url
     def set_url(self,url):
         self.url=url
+    def get_music(self):
+        return self.music
+    def set_music(self,html):
+        self.music=html
     def get_css(self):
         return self.css
     def set_css(self,html):

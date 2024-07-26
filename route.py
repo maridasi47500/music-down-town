@@ -4,6 +4,7 @@ from user import User
 from country import Country
 from somehtml import Somehtml
 
+from mymusic import Music
 
 from mydb import Mydb
 from mypic import Pic
@@ -16,6 +17,7 @@ import sys
 class Route():
     def __init__(self):
         self.dbUsers=User()
+
         self.Program=Directory("become 1 builder")
         self.Program.set_path("./")
         self.mysession={"notice":None,"email":None,"name":None}
@@ -69,6 +71,9 @@ class Route():
     def addfourpointfield(self,search):
         print("hello action")
         return self.render_figure.render_figure("welcome/fourpointfield.html")
+    def addsong(self,search):
+        print("hello action")
+        return self.render_figure.render_figure("welcome/addsong.html")
     def addsymbol(self,search):
         print("hello action")
         return self.render_figure.render_figure("welcome/addsymbol.html")
@@ -211,6 +216,20 @@ class Route():
             self.set_notice("erreur ; pas ok pour la creation de votre couragejournal")
             self.set_json("{\"redirect\":\"/addcouragejournal\"}")
             return self.render_figure.render_json()
+
+    def newsong(self,params={}):
+        myparam=self.get_post_data()(params=("artist","filename","title","image","link","mytext"))
+        song=self.db.Song.create(myparam)
+        if song["song_id"]:
+           self.set_notice("votre song a été créé(e)")
+           self.set_json("{\"redirect\":\"/addsong\"}")
+           return self.render_figure.render_json()
+        else:
+           self.set_notice("erreur ; pas ok pour la creation de votre song")
+           self.set_json("{\"redirect\":\"/addsong\"}")
+           return self.render_figure.render_json()
+    def ecoutermusic(self,search):
+        return self.render_figure.render_figure("welcome/ecoutermusic.html")
     def run(self,redirect=False,redirect_path=False,path=False,session=False,params={},url=False,post_data=False):
         if post_data:
             print("post data")
@@ -229,6 +248,9 @@ class Route():
             self.render_figure.ajouter_a_mes_mots(balise="section",text=self.Program.get_title())
         if path and path.endswith("png"):
             self.Program=Pic(path)
+            self.Program.set_path("./")
+        elif path and path.endswith("mp3"):
+            self.Program=Music(path)
             self.Program.set_path("./")
         elif path and path.endswith("html"):
             self.Program=Somehtml(path)
@@ -262,11 +284,14 @@ class Route():
             '^/addcouragelog$':self.addcouragelog,
             '^/addfourpointfield$':self.addfourpointfield,
             '^/addgoals$':self.addgoals,
+            '^/addsong$':self.addsong,
+            '^/ecoutermusic$':self.ecoutermusic,
             '^/addasif$':self.addasif,
             '^/newcouragejournal$':self.newcouragejournal,
             '^/newcouragelog$':self.newcouragelog,
             '^/newfourpointfield$':self.newfourpointfield,
             '^/newgoals$':self.newgoals,
+            '^/newsong$':self.newsong,
             '^/newasif$':self.newasif,
             '^/addsymbol$':self.addsymbol,
             '^/save_user$':self.save_user,

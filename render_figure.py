@@ -1,5 +1,6 @@
 import re
 from fichier import Fichier
+import json
 import os
 import traceback
 from mydb import Mydb
@@ -37,8 +38,7 @@ class RenderFigure():
     def render_body(self):
         try:
           mystr=""
-          loc={"db":Mydb(),"session": self.session,"render_collection": self.render_collection,"params":self.params,"getparams": self.getparams,"Fichier":Fichier,"date":date,"datetime":datetime}
-          #loc={"session": self.session,"render_collection": self.render_collection,"params":self.params,"getparams": self.getparams,"Fichier":Fichier,"date":date}
+          loc={"json":json,"db":Mydb(),"session": self.session,"render_collection": self.render_collection,"params":self.params,"getparams": self.getparams,"Fichier":Fichier,"date":date,"datetime":datetime}
           for n in self.params:
               loc[n]=self.params[n]
           for j in self.body.split("<%"):
@@ -103,7 +103,7 @@ class RenderFigure():
             i=0
             paspremier=False
             ligne=0
-            loc={"db":Mydb(),"collection":collection,"Executeprogram":Executeprogram,"paspremier":False,as_: "","index":0,  "params": self.params,"render_collection":self.render_collection,"date":date,"datetime":datetime}
+            loc={"json":json,"db":Mydb(),"collection":collection,"Executeprogram":Executeprogram,"paspremier":False,as_: "","index":0,  "params": self.params,"render_collection":self.render_collection,"date":date,"datetime":datetime}
             for y in mylocals:
                 loc[y]=mylocals[y]
 

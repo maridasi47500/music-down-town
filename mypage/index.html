@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="/css/Hey.css" type="text/css">
     <link rel="stylesheet" href="/css/App.css" type="text/css">
+    <link rel="stylesheet" href="/css/myplayer.css" type="text/css">
 	       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 		            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 			         crossorigin=""></script>
@@ -72,17 +73,20 @@
                             <%="<form action=\"/logmeout\" method=\"post\"><input value=\"se deconnecter\" type=\"submit\"/></form>" if session['name'] != "" else ""%>
 
                                     <%="bienvenue "+session['name'] if session['name'] != "" else ""%>
-<%="<a href=\"/addcouragelog\"> add couragelog</a>" if session['name'] != "" else ""%>
-<%="<a href=\"/addcouragejournal\"> add couragejournal</a>" if session['name'] != "" else ""%>
-<%="<a href=\"/addasif\"> add asif</a>" if session['name'] != "" else ""%>
-<%="<a href=\"/addgoals\"> add goals</a>" if session['name'] != "" else ""%>
-<%="<a href=\"/addfourpointfield\"> add fourpointfield</a>" if session['name'] != "" else ""%>
-<%="<a href=\"/addsymbol\"> add symbol</a>" if session['name'] != "" else ""%>
+
+		  <a class="navbar-brand" href="/">{debutmots}</a>
 
 
             </div>
 
 					        <ul class="navbar-nav mr-auto">
+				    <%="<li><a href=\"/ecoutermusic\"> ecouter music</a></li>" if session['name'] != "" else ""%>
+				    <%="<li><a href=\"/addsong\"> add song</a></li>" if session['name'] != "" else ""%>
+<%="<li><a href=\"/addcouragejournal\"> add couragejournal</a></li>" if session['name'] != "" else ""%>
+<%="<li><a href=\"/addasif\"> add asif</a></li>" if session['name'] != "" else ""%>
+<%="<li><a href=\"/addgoals\"> add goals</a></li>" if session['name'] != "" else ""%>
+<%="<li><a href=\"/addfourpointfield\"> add fourpointfield</a></li>" if session['name'] != "" else ""%>
+<%="<li><a href=\"/addsymbol\"> add symbol</a></li>" if session['name'] != "" else ""%>
  <li class="nav-item"> <a class="nav-link" href="/sign_up">S'inscrire</a> 
 
 </li> 
@@ -129,6 +133,7 @@
 
   <script src="/js/post.js"></script>
   <script src="/js/mymap.js"></script>
+  <script src="/js/myplayer.js"></script>
 
 
 
