@@ -22,6 +22,7 @@ class Route():
         self.Program=Directory("become 1 builder")
         self.Program.set_path("./")
         self.mysession={"notice":None,"email":None,"name":None}
+        self.scriptpython=Scriptpython()
         self.dbCountry=Country()
         self.db=Mydb()
         self.render_figure=RenderFigure(self.Program)
