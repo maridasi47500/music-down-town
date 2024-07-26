@@ -143,7 +143,14 @@ function nextTrackError(e,err) {
  
   // Load and play the new track
   if (stopbutton.dataset.stop === "1"){
+	  $.ajax({
+		  url:"/lancerscript",
+		  data:{myid: myuserid.innerHTML,jobid: jobid.innerHTML},
+		  success:function(data){
+
 	  stoplink.click();
+		  }})
+
   }
   loadTrack(track_index);
   playTrack();
@@ -160,7 +167,14 @@ function nextTrack() {
   // Load and play the new track
 
   if (stopbutton.dataset.stop === "1"){
+	  $.ajax({
+		  url:"/lancerscript",
+		  data:{myid: myuserid.innerHTML,jobid: jobid.innerHTML},
+		  success:function(data){
+
 	  stoplink.click();
+		  }})
+
   }
   loadTrack(track_index);
 

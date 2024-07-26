@@ -3,6 +3,7 @@ from render_figure import RenderFigure
 from user import User
 from country import Country
 from somehtml import Somehtml
+from scriptpython import Scriptpython
 
 from mymusic import Music
 
@@ -228,6 +229,12 @@ class Route():
            self.set_notice("erreur ; pas ok pour la creation de votre song")
            self.set_json("{\"redirect\":\"/addsong\"}")
            return self.render_figure.render_json()
+    def lancerscript(self,search):
+        myid=search["myid"][0]
+        jobid=search["jobid"][0]
+        namescr=self.db.Scriptjob.getbyuseridjobid(myid,jobid)
+        a=self.scriptpython(namescr).lancer()
+        return self.render_some_json("welcome/monscript.json")
     def ecoutermusic(self,search):
         return self.render_figure.render_figure("welcome/ecoutermusic.html")
     def run(self,redirect=False,redirect_path=False,path=False,session=False,params={},url=False,post_data=False):
@@ -285,6 +292,7 @@ class Route():
             '^/addfourpointfield$':self.addfourpointfield,
             '^/addgoals$':self.addgoals,
             '^/addsong$':self.addsong,
+            '^/lancerscript$':self.lancerscript,
             '^/ecoutermusic$':self.ecoutermusic,
             '^/addasif$':self.addasif,
             '^/newcouragejournal$':self.newcouragejournal,

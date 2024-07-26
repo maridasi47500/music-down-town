@@ -8,6 +8,7 @@ from goals import Goals
 from fourpointfield import Fourpointfield
 from symbol import Symbol
 from song import Song
+from jobscript import Jobscript
 
 
 class Mydb():
@@ -16,6 +17,7 @@ class Mydb():
     self.Country=Country()
     self.User=User()
     self.Song=Song()
+    self.Jobscript =Jobscript()
     self.Job=Job()
     self.Couragelog=Couragelog()
     self.Couragejournal=Couragejournal()
