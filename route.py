@@ -76,24 +76,6 @@ class Route():
     def addsong(self,search):
         print("hello action")
         return self.render_figure.render_figure("welcome/addsong.html")
-    def addsymbol(self,search):
-        print("hello action")
-        return self.render_figure.render_figure("welcome/addsymbol.html")
-    def addcouragelog(self,search):
-        print("hello action")
-        return self.render_figure.render_figure("welcome/couragelog.html")
-    def addcouragejournal(self,search):
-        print("hello action")
-        return self.render_figure.render_figure("welcome/couragejournal.html")
-    def addasif(self,search):
-        print("hello action")
-        return self.render_figure.render_figure("welcome/asif.html")
-    def addgoals(self,search):
-        print("hello action")
-        return self.render_figure.render_figure("welcome/goal.html")
-
-
-
     def hello(self,search):
         print("hello action")
 
@@ -140,17 +122,19 @@ class Route():
     def signin(self,search):
         return self.render_figure.render_figure("user/signin.html")
 
-    def newsymbol(self,params={}):
-        myparam=self.get_post_data()(params=("user_id","name","pic"))
-        self.user=self.db.Symbols.create(myparam)
-        if self.user["symbol_id"]:
-            self.set_session(self.user)
-            self.set_json("{\"redirect\":\"/\"}")
-            return self.render_figure.render_json()
+    def chat(self,params={}):
+        myparam=self.get_post_data()(params=("user_id","text"))
+        myparam["me"]="1"
+        self.user=self.db.Chat.create(myparam)
+        self.user=self.db.Mychat.gettextbyuserid(myparam["user_id"])
+        if self.user["chat_id"]:
+            self.set_notice("chat ajouté")
+            self.render_figure.set_param("chats",self.db.Chat.getbyuserid(myparam["user_id"]))
+            return self.render_some_json("welcome/chat.json")
         else:
-            self.set_notice("erreur ; pas ok pour la creation de votre symbol")
-            self.set_json("{\"redirect\":\"/sign_up\"}")
-            return self.render_figure.render_json()
+            self.set_notice("erreur ; pas ok pour la creation de votre chat")
+            self.render_figure.set_param("chats",[])
+            return self.render_some_json("welcome/chat.json")
     def save_user(self,params={}):
         myparam=self.get_post_data()(params=("job_id","description","country_id","phone","email","gender","mypic","password","passwordconfirmation","nomcomplet"))
         print(myparam)
@@ -287,21 +271,6 @@ class Route():
             ROUTES={
             '^/signin$': self.signin,
             '^/logmeout$':self.logout,
-            '^/newsymbol$':self.newsymbol,
-            '^/addcouragejournal$':self.addcouragejournal,
-            '^/addcouragelog$':self.addcouragelog,
-            '^/addfourpointfield$':self.addfourpointfield,
-            '^/addgoals$':self.addgoals,
-            '^/addsong$':self.addsong,
-            '^/lancerscript$':self.lancerscript,
-            '^/ecoutermusic$':self.ecoutermusic,
-            '^/addasif$':self.addasif,
-            '^/newcouragejournal$':self.newcouragejournal,
-            '^/newcouragelog$':self.newcouragelog,
-            '^/newfourpointfield$':self.newfourpointfield,
-            '^/newgoals$':self.newgoals,
-            '^/newsong$':self.newsong,
-            '^/newasif$':self.newasif,
             '^/addsymbol$':self.addsymbol,
             '^/save_user$':self.save_user,
             '^/update_user$':self.update_user,
