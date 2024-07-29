@@ -6,7 +6,6 @@ from chaine import Chaine
 import re
 from model import Model
 from scriptpython import Scriptpython
-from jobscript import Jobscript
 class User(Model):
     def __init__(self):
         self.con=sqlite3.connect(self.mydb)
@@ -81,17 +80,7 @@ class User(Model):
           self.cur.execute("insert into user (description,job_id,email,country_id,phone,password,mypic,gender,nomcomplet) values (:description,:job_id,:email,:country_id,:phone,:password,:mypic,:gender,:nomcomplet)",myhash)
           self.con.commit()
           myid=str(self.cur.lastrowid)
-          self.cur.execute("select user.*,job.name jobname from user left join job on job.id = user.job_id where user.id = ?",(myid,))
-          user1=self.cur.fetchone()
-          jobname=user1["jobname"]
-          script=Chaine().fichier("hey.rb")
-          name=script.split(".")[0]
-          monscript=Fichier("./uploads",script).ecrire("""p "je m'ppelle {name}, je suis {job}, je gagne 2000eur"
-         """.format(myroot=os.getcwd(), job=jobname,name=user1["nomcomplet"]))
-          myprogram="ruby"
-          monfichier=Fichier("./uploads","lancer_"+name+".sh").ecrire("""xterm -l -hold -e "cd {myroot}/uploads && echo 'c\'est mon script' && bash -l -c '{program} ./{name}'"
-         """.format(myroot=os.getcwd(), name=script,program=myprogram))
-          Jobscript().create({"user_id":myid,"job_id":user1["job_id"],"name": name})
+          
           
         except Exception as e:
           print("my error"+str(e))

@@ -1,4 +1,5 @@
-# coding=utf-8
+from dotenv import load_dotenv
+load_dotenv()
 import openai
 import sqlite3
 import sys
@@ -30,7 +31,7 @@ class Mychat(Chat):
         job=self.cur.fetchall()
         self.con.commit()
         return None
-    def gettextbyuserid(self,myid,text):
+    def gettextbyuserid(self,myid):
         self.cur.execute("select * from chat where user_id = ?",(myid,))
         job=self.cur.fetchall()
         myarr=[]

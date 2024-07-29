@@ -1,0 +1,2 @@
+  <%="," if paspremier else ""%>
+{"role":"<%=chat["role"]%>","content":"<%=chat["role"]%>"}

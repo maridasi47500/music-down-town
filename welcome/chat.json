@@ -1,0 +1,1 @@
+{"text":[<%=render_collection(collection=params['chats'], partial='welcome/_chat.json', as_='chat')%>]}

@@ -28,6 +28,10 @@ class Chat(Model):
         job=self.cur.fetchall()
         self.con.commit()
         return None
+    def getbyuserid(self,myid):
+        self.cur.execute("select * from chat where user_id = ?",(myid,))
+        job=self.cur.fetchall()
+        return job
     def getbyid(self,myid):
         self.cur.execute("select * from chat where id = ?",(myid,))
         row=dict(self.cur.fetchone())

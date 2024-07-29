@@ -22,7 +22,7 @@ class Route():
         self.Program=Directory("become 1 builder")
         self.Program.set_path("./")
         self.mysession={"notice":None,"email":None,"name":None}
-        self.scriptpython=Scriptpython()
+        self.scriptpython=Scriptpython
         self.dbCountry=Country()
         self.db=Mydb()
         self.render_figure=RenderFigure(self.Program)
@@ -270,8 +270,9 @@ class Route():
             print("link route ",path)
             ROUTES={
             '^/signin$': self.signin,
+            '^/chat$': self.chat,
             '^/logmeout$':self.logout,
-            '^/addsymbol$':self.addsymbol,
+
             '^/save_user$':self.save_user,
             '^/update_user$':self.update_user,
             "^/seeuser/([0-9]+)$":self.seeuser,
