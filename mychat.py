@@ -1,6 +1,9 @@
 from dotenv import load_dotenv
 load_dotenv()
 import openai
+from openai import AsyncOpenAI
+
+
 import sqlite3
 import sys
 import re
@@ -41,7 +44,8 @@ class Mychat(Chat):
             'content':x["text"],
           })
         model="gpt-3.5-turbo"
-        openai.ChatCompletion.create(model=model, messages=myarr)
+        client = AsyncOpenAI()
+        completion = await client.chat.completions.create(model=model, messages=myarr)
 
         text= response["choices"][-1]["0"]["message"]
         hey=self.create({"user_id":myid, "text":text,"me":"0"})
