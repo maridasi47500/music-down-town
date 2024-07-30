@@ -8,6 +8,10 @@
 height:87vh;
 overflow-y:scroll;
 }
+main {
+background:black;
+color:white;
+}
 .closechat{
 color:black;
 background:green;
