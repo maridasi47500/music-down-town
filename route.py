@@ -126,7 +126,7 @@ class Route():
         myparam=self.get_post_data()(params=("user_id","text"))
         myparam["me"]="1"
         self.user=self.db.Chat.create(myparam)
-        self.user=self.db.Mychat.gettextbyuserid(myparam["user_id"])
+        self.user= self.db.Mychat.gettextbyuserid(myparam["user_id"])
         if self.user["chat_id"]:
             self.set_notice("chat ajouté")
             self.render_figure.set_param("chats",self.db.Chat.getbyuserid(myparam["user_id"]))
