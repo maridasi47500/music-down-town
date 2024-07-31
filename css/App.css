@@ -3,6 +3,68 @@ height:200px;
 width:100%;
 overflow-y:scroll;
 }
+.feu1 {
+	    animation-name: feu;
+	    animation-duration: 15s;
+	    display:block;
+    }
+.feu2 {
+	    animation-name: feu;
+	    animation-duration: 15s;
+	    display:block;
+    }
+    span.feu1 {
+	        position: absolute;
+		    width: 10%;
+		        height: 19%;
+			    background: #c92f2f;
+			        left: 27%;
+				    top: 27%;
+				        z-index: 32;
+					    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+				    }
+				    span.feu2 {
+					        position: absolute;
+						    width: 40%;
+						        height: 19%;
+							    background: #b6c92fd9;
+							        left: 74%;
+								    top: 25%;
+								        z-index: 32;
+									    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+								    }
+.picvtt {
+	    animation-name: bla;
+	    animation-duration: 15s;
+		    transform:rotate(0deg) translate(50%,0%);
+		    width:fit-content;
+    }
+    @keyframes feu {
+	    0%{
+		   width:0; 
+		   height:0;
+	    }
+	    99%{
+		   width:0; 
+		   height:0;
+	    }
+	    100% {
+	    }
+    
+    }
+    @keyframes bla {
+	    0% {
+
+		    transform:rotate(0deg) translate(0%,0%);
+	    }
+	    50% {
+		    transform:rotate(0deg) translate(50%,0%);
+	    }
+	    100% {
+		    transform:rotate(0deg) translate(50%,0%);
+	    }
+    
+    }
 .neon {
 	font-size: 40px;
 	text-shadow: 0px 5px 7px #11ac46;

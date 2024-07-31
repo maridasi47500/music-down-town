@@ -2,8 +2,6 @@
 music down town
 
 </p>
-<img src="vtt.webp"/>
-<div>
-<%=Fichier("./welcome","me.html").lire() if session['name'] != "" else "se connecter   "%>
+<%=Fichier("./welcome","ok.html").lire() if session['name'] != "" else Fichier("./welcome","me.html").lire()%>
 </div>
 

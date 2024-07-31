@@ -63,7 +63,7 @@
 			          <img class="loading-image" src="/loading.jpg" alt="loading..">
 				     </center>
 	</div>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		  <a class="navbar-brand" href="/">{debutmots}</a>
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="navbar-toggler-icon"></span>
@@ -71,9 +71,10 @@
 
 				    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <div class="d-flex">
-                            <%="<form action=\"/logmeout\" method=\"post\"><input value=\"se deconnecter\" type=\"submit\"/></form>" if session['name'] != "" else ""%>
 
                                     <%="bienvenue "+session['name'] if session['name'] != "" else ""%>
+
+</div>
 
 		  <a class="navbar-brand" href="/">{debutmots}</a>
 
@@ -81,19 +82,8 @@
             </div>
 
 					        <ul class="navbar-nav mr-auto">
-				    <%="<li><a href=\"/ecoutermusic\"> ecouter music</a></li>" if session['name'] != "" else ""%>
-				    <%="<li><a href=\"/addsong\"> add song</a></li>" if session['name'] != "" else ""%>
-<%="<li><a href=\"/addcouragejournal\"> add couragejournal</a></li>" if session['name'] != "" else ""%>
-<%="<li><a href=\"/addasif\"> add asif</a></li>" if session['name'] != "" else ""%>
-<%="<li><a href=\"/addgoals\"> add goals</a></li>" if session['name'] != "" else ""%>
-<%="<li><a href=\"/addfourpointfield\"> add fourpointfield</a></li>" if session['name'] != "" else ""%>
-<%="<li><a href=\"/addsymbol\"> add symbol</a></li>" if session['name'] != "" else ""%>
- <li class="nav-item"> <a class="nav-link" href="/sign_up">S'inscrire</a> 
-
-</li> 
- <li class="nav-item"> <a class="nav-link" href="/sign_in">Se connecter</a> 
-
-</li> 
+		    <%=Fichier("./welcome","deconnexion.html").lire() if session['name'] != "" else ""%>
+		    <%=Fichier("./welcome","connexion.html").lire() if session['name'] == "" else ""%>
 
 <li class="nav-item dropdown">
 															              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

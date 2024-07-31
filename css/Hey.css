@@ -11,6 +11,7 @@ overflow-y:scroll;
 main {
 background:black;
 color:white;
+height:100%;
 }
 .closechat{
 color:black;
