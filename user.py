@@ -17,6 +17,8 @@ class User(Model):
         mypic text,
         country_id text,
         job_id text,
+        lat text,
+        lon text,
         description text,
         phone text,
         gender text,
@@ -77,7 +79,7 @@ class User(Model):
         monscript=None
         msg=""
         try:
-          self.cur.execute("insert into user (description,job_id,email,country_id,phone,password,mypic,gender,nomcomplet) values (:description,:job_id,:email,:country_id,:phone,:password,:mypic,:gender,:nomcomplet)",myhash)
+            self.cur.execute("insert into user (lat,lon,description,job_id,email,country_id,phone,password,mypic,gender,nomcomplet) values (:lat,:lon,:description,:job_id,:email,:country_id,:phone,:password,:mypic,:gender,:nomcomplet)",myhash)
           self.con.commit()
           myid=str(self.cur.lastrowid)
           

@@ -9,6 +9,7 @@ from mymusic import Music
 
 from mydb import Mydb
 from mypic import Pic
+from myvid import Vid
 from javascript import Js
 from stylesheet import Css
 import re
@@ -150,6 +151,11 @@ class Route():
             self.set_session(self.user)
             self.set_json("{\"redirect\":\"/sign_up\"}")
             return self.render_figure.render_json()
+    def getvideo(self,params={}):
+        myparam=params["artist"][0]
+        song=self.db.Video.getonebyartist(myparam)
+        self.render_figure.set_param("video",song)
+        return self.render_some_json("welcome/video.json")
     def newvideo(self,params={}):
         myparam=self.get_post_data()(params=("artist","filename","title","image","date","time"))
         song=self.db.Song.create(myparam)
@@ -199,6 +205,9 @@ class Route():
         if path and path.endswith("png"):
             self.Program=Pic(path)
             self.Program.set_path("./")
+        elif path and path.endswith("vid"):
+            self.Program=Vid(path)
+            self.Program.set_path("./")
         elif path and path.endswith("mp3"):
             self.Program=Music(path)
             self.Program.set_path("./")
@@ -231,6 +240,7 @@ class Route():
             '^/addvideo$': self.addvideo,
             '^/addsong$': self.addsong,
             '^/newvideo$': self.newvideo,
+            '^/getvideo$': self.getvideo,
             '^/newsong$': self.newsong,
             '^/ecoutermusic$': self.ecoutermusic,
             '^/chat$': self.chat,

@@ -56,7 +56,10 @@
 
 
 <body>
+	<%user=db.User.getbyid(session["user_id"]])%>
 	<div id="myuserid"><%=session["user_id"]%></div>
+	<div id="userlat"><%=user["lat"]%></div>
+	<div id="userlon"><%=user["lon"]%></div>
 	<div class="loader">
 		   <center>
 			   <h3>patientez svp</h3>

@@ -1,0 +1,7 @@
+<%video=params["video"]%>
+{
+	"title":"<%=video["title"]%>",
+	"filename":"<%=video["filename"]%>",
+	"date":"<%=video["date"]%>",
+	"time":"<%=video["time"]%>"
+}

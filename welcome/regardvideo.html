@@ -1,0 +1,11 @@
+<div class="datetime">
+<input readonly type="date" id="currentDate" />
+<input readonly type="time" id="currentTime" />
+<select id="selectArtist">
+	<option value="">sélectionnez un artiste</option> <%=render_collection(collection=db.Video.getallartist(), partial='welcome/_artist.html', as_='job')%>
+	
+
+</select>
+</div>
+<h2 id="mavid"></h2>
+<video id="mavideo"></video>

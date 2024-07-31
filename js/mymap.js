@@ -11,8 +11,8 @@ const LeafIcon = L.Icon.extend({
 						}
 		});
 
-    var lat = 20.977033491036835;
-        var lon = 79.47668567834879;
+    var lat = userlat.innerHTML === "" ? 20.977033491036835 : parseFloat(userlat.innerHTML);
+        var lon = userlon.innerHTML === "" ? 79.47668567834879 : parseFloat(userlon.innerHTML);
             var alt =481;
                 var macarte = null;
                     //var trace = new Array();
