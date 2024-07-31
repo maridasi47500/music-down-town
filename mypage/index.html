@@ -56,10 +56,10 @@
 
 
 <body>
-	<%user=db.User.getbyid(session["user_id"]])%>
+	<%user=db.User.getbyid(session["user_id"])%>
 	<div id="myuserid"><%=session["user_id"]%></div>
-	<div id="userlat"><%=user["lat"]%></div>
-	<div id="userlon"><%=user["lon"]%></div>
+	<div id="userlat"><%=user["lat"] if user is not None else ""%></div>
+	<div id="userlon"><%=user["lon"] if user is not None else ""%></div>
 	<div class="loader">
 		   <center>
 			   <h3>patientez svp</h3>
@@ -85,8 +85,8 @@
             </div>
 
 					        <ul class="navbar-nav mr-auto">
-		    <%=Fichier("./welcome","deconnexion.html").lire() if session['name'] != "" else ""%>
-		    <%=Fichier("./welcome","connexion.html").lire() if session['name'] == "" else ""%>
+		    <%=Fichier("./mypage","deconnexion.html").lire() if session['name'] != "" else ""%>
+		    <%=Fichier("./mypage","connexion.html").lire() if session['name'] == "" else ""%>
 
 <li class="nav-item dropdown">
 															              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
